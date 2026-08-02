@@ -1,0 +1,130 @@
+:root {
+    --etr-mr-navy: #17303e;
+    --etr-mr-orange: #d66a12;
+    --etr-mr-soft: #f5f8f8;
+    --etr-mr-line: #d6e0e4;
+    --etr-mr-good: #167346;
+    --etr-mr-warn: #8b4a00;
+}
+
+.etr-mr-search,
+.etr-mr-plan,
+.etr-mr-checkout-request {
+    color: var(--etr-mr-navy);
+}
+
+.etr-mr-search {
+    padding: 18px;
+    border-radius: 18px;
+    background: rgba(255,255,255,.98);
+    box-shadow: 0 18px 55px rgba(0,0,0,.2);
+}
+
+.etr-mr-primary-fields {
+    display: grid;
+    grid-template-columns: 1.35fr repeat(2, 1fr) .65fr;
+    gap: 12px;
+}
+
+.etr-mr-field label,
+.etr-mr-age-field {
+    display: block;
+    margin-bottom: 5px;
+    font-size: .82rem;
+    font-weight: 800;
+}
+
+.etr-mr-field input,
+.etr-mr-field select,
+.etr-mr-age-field select {
+    width: 100%;
+    min-height: 46px;
+    padding: 8px 10px;
+    border: 1px solid #acbdc5;
+    border-radius: 10px;
+    background: #fff;
+    color: var(--etr-mr-navy);
+    font: inherit;
+}
+
+.etr-mr-room-list {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0,1fr));
+    gap: 12px;
+    margin-top: 14px;
+}
+
+.etr-mr-room {
+    min-width: 0;
+    padding: 12px;
+    border: 1px solid var(--etr-mr-line);
+    border-radius: 12px;
+    background: var(--etr-mr-soft);
+}
+
+.etr-mr-room[hidden] { display:none !important; }
+.etr-mr-room legend { padding: 0 6px; font-weight: 900; }
+.etr-mr-room-fields { display:grid; grid-template-columns: .7fr .7fr 1.6fr; gap:10px; align-items:end; }
+.etr-mr-child-ages { display:grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap:6px; }
+.etr-mr-search-footer { display:flex; justify-content:space-between; align-items:center; gap:16px; margin-top:14px; }
+.etr-mr-total { margin:0; font-weight:800; }
+.etr-mr-submit,
+.etr-mr-use-plan {
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    min-height:46px;
+    padding:10px 18px;
+    border:0;
+    border-radius:10px;
+    background:#f2a05e;
+    color:#172f3d !important;
+    font-weight:900;
+    text-decoration:none;
+    cursor:pointer;
+}
+
+.etr-mr-plan {
+    width:min(1180px,calc(100% - 32px));
+    margin:28px auto;
+    padding:22px;
+    border:1px solid var(--etr-mr-line);
+    border-radius:18px;
+    background:#fff;
+}
+.etr-mr-plan__header { display:flex; justify-content:space-between; gap:24px; align-items:flex-start; }
+.etr-mr-eyebrow { color:#a94f00; font-weight:900; text-transform:uppercase; letter-spacing:.08em; }
+.etr-mr-party-summary { display:flex; flex-wrap:wrap; gap:8px; padding:0; margin:0; list-style:none; }
+.etr-mr-party-summary li { min-width:150px; padding:9px 11px; border:1px solid var(--etr-mr-line); border-radius:10px; background:var(--etr-mr-soft); }
+.etr-mr-party-summary span,.etr-mr-party-summary small { display:block; }
+.etr-mr-solutions { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:14px; margin:18px 0; }
+.etr-mr-solution { padding:16px; border:1px solid var(--etr-mr-line); border-radius:14px; }
+.etr-mr-solution.is-selected { border:3px solid var(--etr-mr-good); }
+.etr-mr-solution__title { display:flex; justify-content:space-between; gap:12px; align-items:flex-start; }
+.etr-mr-solution__title h3 { margin:0; }
+.etr-mr-solution__title small { display:block; font-weight:500; }
+.etr-mr-solution li { margin-bottom:8px; }
+.etr-mr-solution li span,.etr-mr-solution li a { display:block; }
+.etr-mr-notice { margin-top:16px; padding:14px; border-left:4px solid var(--etr-mr-good); background:var(--etr-mr-soft); }
+.etr-mr-notice--warning { border-left-color:var(--etr-mr-warn); }
+.etr-mr-required-card { outline:4px solid #e27822; outline-offset:4px; position:relative; }
+.etr-mr-required-badge { display:inline-flex; padding:6px 9px; margin:6px; border-radius:999px; background:#17303e; color:#fff; font-weight:900; }
+.etr-mr-checkout-request { margin-bottom:22px; padding:16px; border:1px solid var(--etr-mr-line); border-radius:14px; background:var(--etr-mr-soft); }
+.etr-mr-checkout-request [data-etr-mr-checkout-warning] { color:#8b1e13; font-weight:800; }
+
+@media (max-width: 820px) {
+    .etr-mr-primary-fields { grid-template-columns:1fr 1fr; }
+    .etr-mr-field--destination { grid-column:1/-1; }
+    .etr-mr-room-list,.etr-mr-solutions { grid-template-columns:1fr; }
+    .etr-mr-room-fields { grid-template-columns:1fr 1fr; }
+    .etr-mr-child-ages { grid-column:1/-1; }
+    .etr-mr-plan__header { display:block; }
+}
+
+@media (max-width: 520px) {
+    .etr-mr-primary-fields { grid-template-columns:1fr; }
+    .etr-mr-field--destination { grid-column:auto; }
+    .etr-mr-room-fields { grid-template-columns:1fr 1fr; }
+    .etr-mr-search-footer { display:block; }
+    .etr-mr-submit { width:100%; margin-top:10px; }
+}
