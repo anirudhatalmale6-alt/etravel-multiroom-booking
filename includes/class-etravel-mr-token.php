@@ -99,18 +99,44 @@ final class ETravel_MR_Token {
 		return self::QUERY_VAR;
 	}
 
+	private static function cookie_path(): string {
+		return defined( 'COOKIEPATH' ) && COOKIEPATH ? COOKIEPATH : '/';
+	}
+
+	private static function cookie_domain(): string {
+		return defined( 'COOKIE_DOMAIN' ) && COOKIE_DOMAIN ? COOKIE_DOMAIN : '';
+	}
+
 	public static function set_cookie( string $token ): void {
-		$expire = time() + self::ttl();
-		$path   = defined( 'COOKIEPATH' ) && COOKIEPATH ? COOKIEPATH : '/';
-		$domain = defined( 'COOKIE_DOMAIN' ) ? COOKIE_DOMAIN : '';
-		setcookie( self::COOKIE, $token, $expire, $path, $domain, is_ssl(), true );
+		// v1.1.1: explicit Secure + HttpOnly + SameSite=Lax. Identical path/domain on set/clear.
+		setcookie(
+			self::COOKIE,
+			$token,
+			array(
+				'expires'  => time() + self::ttl(),
+				'path'     => self::cookie_path(),
+				'domain'   => self::cookie_domain(),
+				'secure'   => is_ssl(),
+				'httponly' => true,
+				'samesite' => 'Lax',
+			)
+		);
 		$_COOKIE[ self::COOKIE ] = $token;
 	}
 
 	public static function clear_cookie(): void {
-		$path   = defined( 'COOKIEPATH' ) && COOKIEPATH ? COOKIEPATH : '/';
-		$domain = defined( 'COOKIE_DOMAIN' ) ? COOKIE_DOMAIN : '';
-		setcookie( self::COOKIE, '', time() - 3600, $path, $domain, is_ssl(), true );
+		setcookie(
+			self::COOKIE,
+			'',
+			array(
+				'expires'  => time() - HOUR_IN_SECONDS,
+				'path'     => self::cookie_path(),
+				'domain'   => self::cookie_domain(),
+				'secure'   => is_ssl(),
+				'httponly' => true,
+				'samesite' => 'Lax',
+			)
+		);
 		unset( $_COOKIE[ self::COOKIE ] );
 	}
 }

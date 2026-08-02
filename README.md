@@ -3,6 +3,9 @@
 Exact per-room guest requests, multi-room availability planning, MotoPress handoff,
 checkout occupancy binding and booking-request records for eTravel.gr.
 
+## Version 1.1.1
+- Opaque-token cookie is now explicitly **Secure + HttpOnly + SameSite=Lax**, with identical path/domain on set and clear.
+
 ## Version 1.1.0 — R3.1 hardening
 - Opaque, single-use, server-side room-plan **token** (4h expiry) — the detailed plan and
   child ages never travel in a URL or an encoded cookie.

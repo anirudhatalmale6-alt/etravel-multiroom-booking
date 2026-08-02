@@ -2,7 +2,7 @@
 /**
  * Plugin Name: eTravel Multi-Room Booking for MotoPress
  * Description: Exact per-room guest requests, multi-room availability planning, MotoPress handoff, checkout occupancy prefilling, and booking request records for eTravel.
- * Version: 1.1.0
+ * Version: 1.1.1
  * Author: eTravel
  * Requires at least: 6.4
  * Requires PHP: 8.1
@@ -11,7 +11,7 @@
 
 defined( 'ABSPATH' ) || exit;
 
-define( 'ETR_MR_VERSION', '1.1.0' );
+define( 'ETR_MR_VERSION', '1.1.1' );
 define( 'ETR_MR_FILE', __FILE__ );
 define( 'ETR_MR_DIR', plugin_dir_path( __FILE__ ) );
 define( 'ETR_MR_URL', plugin_dir_url( __FILE__ ) );
